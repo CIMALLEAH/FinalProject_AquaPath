@@ -66,6 +66,10 @@ class RegistrationActivity : AppCompatActivity() {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
+                    // 1. VISUAL FEEDBACK: Disable button and show "Registering..."
+                    btnRegister.isEnabled = false
+                    btnRegister.text = "Registering..."
+
                     // Create user in Firebase Auth
                     auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
@@ -81,24 +85,42 @@ class RegistrationActivity : AppCompatActivity() {
                                 if (userId != null) {
                                     db.collection("users").document(userId).set(userMap)
                                         .addOnSuccessListener {
-                                            Toast.makeText(this, "Registration successful!", Toast.LENGTH_LONG).show()
-                                            // Go to Home Page
-                                            val intent = Intent(this, OceanHomeActivity::class.java)
-                                            // Clear back stack so they can't go back to registration
+                                            // 2. CRITICAL FIX: Sign out so MainActivity doesn't auto-redirect
+                                            auth.signOut()
+
+                                            Toast.makeText(this, "Registration successful! Please login.", Toast.LENGTH_LONG).show()
+
+                                            // Go to Login Page (MainActivity)
+                                            val intent = Intent(this, MainActivity::class.java)
                                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                             startActivity(intent)
                                             finish()
                                         }
                                         .addOnFailureListener { e ->
-                                            Toast.makeText(this, "Error saving data: ${e.message}", Toast.LENGTH_SHORT).show()
+                                            // Re-enable button on failure
+                                            resetButtonState()
+                                            Toast.makeText(this, "Firestore Error: ${e.message}", Toast.LENGTH_SHORT).show()
                                         }
+                                } else {
+                                    // Edge case: User created but ID is null
+                                    resetButtonState()
+                                    Toast.makeText(this, "Error: User ID not found.", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
-                                Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                                // Re-enable button on failure
+                                resetButtonState()
+                                // This is where "Email already in use" would show up
+                                Toast.makeText(this, "Auth Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                             }
                         }
                 }
             }
         }
     }
+
+    private fun resetButtonState() {
+        btnRegister.isEnabled = true
+        btnRegister.text = "REGISTER"
+    }
 }
+

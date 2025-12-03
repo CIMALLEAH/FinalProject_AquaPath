@@ -1,3 +1,29 @@
 <resources>
+    <!-- You might already have this one -->
     <string name="app_name">AquaPath</string>
+
+    <!-- Hero Section -->
+    <string name="wave_background">Wave background pattern</string>
+    <string name="hero_title">Small Steps,\nBig Waves.</string>
+    <string name="hero_subtitle">Join the movement to protect our oceans 🌊</string>
+
+    <!-- Stats Section -->
+    <string name="stat_volunteers">Volunteers</string>
+    <string name="stat_trash_gone">Trash Gone</string>
+    <string name="stat_raised">Raised</string>
+
+    <!-- Action Buttons -->
+    <string name="button_volunteer">Become a Volunteer</string>
+    <string name="button_join_event">Join Cleanup Event</string>
+
+    <!-- Featured Story -->
+    <string name="featured_story">Featured Story 🌟</string>
+    <string name="coral_story_image">Image of restored coral beds</string>
+    <string name="coral_story_title">New Coral Beds Restored!</string>
+    <string name="coral_story_description">Thanks to our amazing team, we planted 50 new coral fragments in the bay area...</string>
+
+    <!-- Donate Section -->
+    <string name="donate_prompt">Help fund ocean cleanup projects 💙</string>
+    <string name="button_donate">Donate Now</string>
+
 </resources>

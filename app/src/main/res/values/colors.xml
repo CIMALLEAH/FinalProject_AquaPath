@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="deep_blue">#003f5c</color>
+    <color name="teal_accent">#2f9e99</color>
+    <color name="sea_green">#78c6a3</color>
+    <color name="soft_grey">#F5F7FA</color>
+    <color name="text_dark">#263238</color>
+
+    <!-- Ocean Theme Colors -->
+    <color name="ocean_dark">#003049</color>
+    <color name="ocean_medium">#176B87</color>
+    <color name="ocean_light">#4ECDC4</color>
+    <color name="ocean_accent">#44A08D</color>
+
+    <!-- CTA Colors -->
+    <color name="cta_primary">#FF6B6B</color>
+    <color name="cta_secondary">#EE5A6F</color>
+
+    <!-- Neutral Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_light">#F5F7FA</color>
+    <color name="gray_medium">#C3CFE2</color>
+    <color name="gray_dark">#666666</color>
+    <color name="text_primary">#333333</color>
+
 </resources>

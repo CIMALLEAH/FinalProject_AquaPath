@@ -7,40 +7,54 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var etUsername: EditText
+    private lateinit var etUsername: EditText // Assuming this is Email for Firebase
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var tvSignUp: TextView
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize views
-        etUsername = findViewById(R.id.etUsername)
+        auth = FirebaseAuth.getInstance()
+
+        // Check if user is already logged in
+        if (auth.currentUser != null) {
+            startActivity(Intent(this, OceanHomeActivity::class.java))
+            finish()
+        }
+
+        etUsername = findViewById(R.id.etUsername) // Treat as Email input
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
         tvSignUp = findViewById(R.id.tvSignUp)
 
-        // Login button click listener
         btnLogin.setOnClickListener {
-            val username = etUsername.text.toString().trim()
+            val email = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
-                // Login logic would go here
-                Toast.makeText(this, "Login clicked for: $username", Toast.LENGTH_SHORT).show()
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, OceanHomeActivity::class.java))
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
 
-        // Sign Up link click listener
         tvSignUp.setOnClickListener {
-            // Navigate to Registration Activity
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }

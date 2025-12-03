@@ -284,7 +284,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:src="@drawable/sand"
+                        android:src="@drawable/coral"
                         android:scaleType="centerCrop"
                         android:contentDescription="@string/coral_story_image" />
 

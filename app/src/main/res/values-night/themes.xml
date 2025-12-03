@@ -1,7 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.AquaPath" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/ocean_medium</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/ocean_light</item>
+        <item name="colorOnPrimaryContainer">@color/ocean_dark</item>
+
+        <item name="colorSecondary">@color/teal_accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/sea_green</item>
+        <item name="colorOnSecondaryContainer">@color/deep_blue</item>
+
+        <item name="android:statusBarColor">@color/ocean_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
+
+    <style name="Theme.AquaPath" parent="Base.Theme.AquaPath" />
 </resources>

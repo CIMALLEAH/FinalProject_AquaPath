@@ -14,7 +14,6 @@
         android:paddingBottom="32dp"
         tools:context=".RegistrationActivity">
 
-        <!-- Back Button -->
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="32dp"
@@ -28,19 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        &lt;!&ndash; Logo Image &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/ivLogo"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:contentDescription="AquaPath Logo"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:src="@drawable/logo" />-->
-
-        <!-- Registration Title -->
         <TextView
             android:id="@+id/tvRegistrationTitle"
             android:layout_width="wrap_content"
@@ -52,10 +38,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="35dp"
-            />
+            android:layout_marginTop="35dp" />
 
-        <!-- Subtitle -->
         <TextView
             android:id="@+id/tvSubtitle"
             android:layout_width="wrap_content"
@@ -68,7 +52,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvRegistrationTitle" />
 
-        <!-- Full Name Label -->
         <TextView
             android:id="@+id/tvFullName"
             android:layout_width="0dp"
@@ -84,7 +67,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
 
-        <!-- Full Name Input -->
         <EditText
             android:id="@+id/etFullName"
             android:layout_width="0dp"
@@ -104,7 +86,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvFullName" />
 
-        <!-- Email Label -->
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="0dp"
@@ -120,7 +101,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etFullName" />
 
-        <!-- Email Input -->
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="0dp"
@@ -140,7 +120,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvEmail" />
 
-        <!-- Password Label -->
         <TextView
             android:id="@+id/tvPassword"
             android:layout_width="0dp"
@@ -156,27 +135,34 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etEmail" />
 
-        <!-- Password Input -->
-        <EditText
-            android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPassword"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="32dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_edittext"
-            android:hint="Enter your password"
-            android:inputType="textPassword"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="#263238"
-            android:textColorHint="#90A4AE"
-            android:textSize="16sp"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false"
+            app:boxBackgroundMode="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+            app:layout_constraintTop_toBottomOf="@id/tvPassword">
 
-        <!-- Confirm Password Label -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#263238"
+                android:textColorHint="#90A4AE"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/tvConfirmPassword"
             android:layout_width="0dp"
@@ -190,29 +176,36 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etPassword" />
+            app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
-        <!-- Confirm Password Input -->
-        <EditText
-            android:id="@+id/etConfirmPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilConfirmPassword"
             android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="32dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:background="@drawable/rounded_edittext"
-            android:hint="Re-enter your password"
-            android:inputType="textPassword"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="#263238"
-            android:textColorHint="#90A4AE"
-            android:textSize="16sp"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false"
+            app:boxBackgroundMode="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvConfirmPassword" />
+            app:layout_constraintTop_toBottomOf="@id/tvConfirmPassword">
 
-        <!-- Register Button -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/rounded_edittext"
+                android:hint="Re-enter your password"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#263238"
+                android:textColorHint="#90A4AE"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
@@ -227,9 +220,8 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etConfirmPassword" />
+            app:layout_constraintTop_toBottomOf="@id/tilConfirmPassword" />
 
-        <!-- Login Link -->
         <TextView
             android:id="@+id/tvLoginLink"
             android:layout_width="wrap_content"
@@ -243,7 +235,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnRegister" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

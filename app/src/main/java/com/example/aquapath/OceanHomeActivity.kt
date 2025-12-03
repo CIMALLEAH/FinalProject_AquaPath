@@ -2,58 +2,100 @@ package com.example.aquapath
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope // Import for coroutines
+import androidx.lifecycle.lifecycleScope
 import com.example.aquapath.databinding.ActivityOceanHomeBinding
-import kotlinx.coroutines.delay // Import for the delay function
-import kotlinx.coroutines.launch // Import for launching the coroutine
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
-// REMOVED all the incorrect private val declarations that were here.
-
 class OceanHomeActivity : AppCompatActivity() {
 
-    // This is the only variable needed for your views.
     private lateinit var binding: ActivityOceanHomeBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOceanHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Initialize Firebase
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        setupUserProfile()
         setupButtonListeners()
         animateCounters()
     }
 
+    private fun setupUserProfile() {
+        val currentUser = auth.currentUser
+
+        if (currentUser != null) {
+            // Set Email immediately
+            binding.tvProfileEmail.text = currentUser.email
+
+            // Fetch Full Name from Firestore to generate Initials
+            val userId = currentUser.uid
+            db.collection("users").document(userId).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val fullName = document.getString("fullName") ?: "Volunteer"
+                        binding.tvProfileName.text = fullName
+
+                        // Generate Initials (e.g., "John Doe" -> "JD")
+                        val initials = fullName.split(" ")
+                            .mapNotNull { it.firstOrNull()?.toString() }
+                            .take(2)
+                            .joinToString("")
+                            .uppercase()
+
+                        binding.tvProfileInitials.text = initials
+                    }
+                }
+                .addOnFailureListener {
+                    // Fallback on error
+                    binding.tvProfileName.text = "Volunteer"
+                    binding.tvProfileInitials.text = "V"
+                }
+        }
+    }
+
     private fun setupButtonListeners() {
-        // Now that the errors are gone, the compiler correctly knows
-        // binding.btnVolunteer is a Button, and calls the correct setOnClickListener.
+        // FLOATING LOGOUT BUTTON LOGIC
+        binding.fabLogout.setOnClickListener {
+            auth.signOut()
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            // Clear back stack to prevent going back to home
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnVolunteer.setOnClickListener {
             addButtonAnimation(it)
             Toast.makeText(this, "🙋‍♀️ Opening Volunteer Registration...", Toast.LENGTH_SHORT).show()
-            // Example of how you would navigate to another activity
-            // val intent = Intent(this, VolunteerActivity::class.java)
-            // startActivity(intent)
         }
 
         binding.btnDonate.setOnClickListener {
             addButtonAnimation(it)
             Toast.makeText(this, "💙 Opening Donation Page...", Toast.LENGTH_SHORT).show()
-            // val intent = Intent(this, DonateActivity::class.java)
-            // startActivity(intent)
         }
 
         binding.btnJoinEvent.setOnClickListener {
             addButtonAnimation(it)
             Toast.makeText(this, "🌊 Opening Events List...", Toast.LENGTH_SHORT).show()
-            // val intent = Intent(this, EventsActivity::class.java)
-            // startActivity(intent)
         }
     }
 
@@ -62,21 +104,13 @@ class OceanHomeActivity : AppCompatActivity() {
         ObjectAnimator.ofFloat(view, "scaleY", 1f, 0.95f, 1f).setDuration(200).start()
     }
 
-    /**
-     * Uses a coroutine to orchestrate animations with readable delays.
-     * The lifecycleScope ensures the coroutine is automatically cancelled
-     * when the activity is destroyed, preventing memory leaks.
-     */
     private fun animateCounters() {
         lifecycleScope.launch {
             startCounterAnimation(binding.tvVolunteers, 2847)
-
-            delay(200) // Non-blocking delay for 200ms
+            delay(200)
             startCounterAnimation(binding.tvTrash, 15629)
-
-            delay(200) // The code waits here before proceeding
+            delay(200)
             startCounterAnimation(binding.tvDonations, 127, prefix = "$", suffix = "K")
-
             delay(200)
             startCounterAnimation(binding.tvProjects, 43)
         }
@@ -105,5 +139,3 @@ class OceanHomeActivity : AppCompatActivity() {
         animator.start()
     }
 }
-
-// REMOVED the private fun Any.setOnClickListener function that was here.

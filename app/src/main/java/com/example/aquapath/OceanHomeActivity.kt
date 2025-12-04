@@ -106,9 +106,9 @@ class OceanHomeActivity : AppCompatActivity() {
 
     private fun animateCounters() {
         lifecycleScope.launch {
-            startCounterAnimation(binding.tvVolunteers, 2847)
+            startCounterAnimation(binding.tvVolunteers, 15629)
             delay(200)
-            startCounterAnimation(binding.tvTrash, 15629)
+            startCounterAnimation(binding.tvEvents, 2847)
             delay(200)
             startCounterAnimation(binding.tvDonations, 127, prefix = "$", suffix = "K")
         }

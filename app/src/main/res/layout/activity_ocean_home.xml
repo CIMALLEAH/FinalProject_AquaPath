@@ -13,24 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="100dp">
+            android:paddingBottom="16dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/profileHeader"
-                android:layout_width="414dp"
-                android:layout_height="98dp"
+                android:layout_width="410dp"
+                android:layout_height="104dp"
                 android:background="@color/deep_blue"
                 android:padding="16dp"
                 app:layout_constraintTop_toTopOf="parent">
-
 
                 <ImageView
                     android:id="@+id/ivLogo"
@@ -42,7 +41,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cvProfile"
@@ -99,21 +97,22 @@
             <FrameLayout
                 android:id="@+id/heroSection"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="180dp"
                 android:background="@color/deep_blue"
                 app:layout_constraintTop_toBottomOf="@id/profileHeader">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/wave"
-                    android:scaleType="centerCrop"
                     android:alpha="0.3"
-                    android:contentDescription="@string/wave_background" />
+                    android:contentDescription="@string/wave_background"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/wave" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="24dp">
@@ -124,7 +123,7 @@
                         android:text="@string/hero_title"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="32sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -141,100 +140,109 @@
                 android:id="@+id/statsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:padding="16dp"
                 android:layout_marginTop="-40dp"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:weightSum="3"
                 app:layout_constraintTop_toBottomOf="@id/heroSection">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="100dp"
-                    android:layout_weight="1"
                     android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardElevation="4dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tvVolunteers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="2,847"
+                            android:text="15,629"
+                            android:textColor="@color/teal_accent"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/teal_accent"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/stat_volunteers"
-                            android:textSize="12sp"
-                            android:textColor="@color/text_dark"/>
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="100dp"
-                    android:layout_weight="1"
                     android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardElevation="4dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
-                            android:id="@+id/tvTrash"
+                            android:id="@+id/tvEvents"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="15,629"
+                            android:text="2,847"
+                            android:textColor="@color/teal_accent"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/teal_accent"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/stat_trash_gone"
-                            android:textSize="12sp"
-                            android:textColor="@color/text_dark"/>
+                            android:text="@string/stat_events"
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="100dp"
-                    android:layout_weight="1"
                     android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white">
+                    app:cardElevation="4dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/tvDonations"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="$127K"
+                            android:text="$127K"
+                            android:textColor="@color/teal_accent"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/teal_accent"/>
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/tvProjects"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/stat_raised"
-                            android:textSize="12sp"
-                            android:textColor="@color/text_dark"/>
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -249,45 +257,45 @@
 
                 <Button
                     android:id="@+id/btnVolunteer"
-                    android:text="@string/button_volunteer"
-                    android:backgroundTint="@color/ocean_medium"
-                    android:textColor="@color/white"
-                    android:padding="14dp"
-                    app:cornerRadius="50dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/ocean_medium"
+                    android:padding="14dp"
+                    android:text="@string/button_volunteer"
+                    android:textColor="@color/white"
+                    app:cornerRadius="50dp" />
 
                 <Button
                     android:id="@+id/btnJoinEvent"
-                    android:text="@string/button_join_event"
-                    android:backgroundTint="@color/deep_blue"
-                    android:textColor="@color/white"
-                    android:padding="14dp"
-                    app:cornerRadius="50dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/deep_blue"
+                    android:padding="14dp"
+                    android:text="@string/button_join_event"
+                    android:textColor="@color/white"
+                    app:cornerRadius="50dp" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvFeatured"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="@string/featured_story"
+                android:textColor="@color/deep_blue"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/deep_blue"
-                android:layout_marginStart="24dp"
-                app:layout_constraintTop_toBottomOf="@id/actionsContainer"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/actionsContainer" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/featuredCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:layout_constraintTop_toBottomOf="@id/tvFeatured">
@@ -300,29 +308,31 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
-                        android:src="@drawable/coral"
+                        android:contentDescription="@string/coral_story_image"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/coral_story_image" />
+                        android:src="@drawable/coral" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="16dp">
+
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/coral_story_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             android:textColor="@color/text_dark"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
-                            android:text="@string/coral_story_description"
-                            android:textSize="14sp"
-                            android:layout_marginTop="8dp"
-                            android:textColor="#546E7A"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:layout_marginTop="8dp"
+                            android:text="@string/coral_story_description"
+                            android:textColor="#546E7A"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -332,9 +342,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:layout_constraintTop_toBottomOf="@id/featuredCard">
@@ -347,29 +356,79 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:src="@drawable/turtle"
+                        android:contentDescription="@string/turtle_story_image"
                         android:scaleType="centerCrop"
-                        android:contentDescription="@string/turtle_story_image" />
+                        android:src="@drawable/turtle" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="16dp">
+
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/turtle_story_title"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
                             android:textColor="@color/text_dark"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
-                            android:text="@string/turtle_story_description"
-                            android:textSize="14sp"
-                            android:layout_marginTop="8dp"
-                            android:textColor="#546E7A"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_width="wrap_content"/>
+                            android:layout_marginTop="8dp"
+                            android:text="@string/turtle_story_description"
+                            android:textColor="#546E7A"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cleanupStoryCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:layout_constraintTop_toBottomOf="@id/turtleStoryCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:contentDescription="@string/cleanup_story_image"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/cleanup" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cleanup_story_title"
+                            android:textColor="@color/text_dark"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/turtle_story_description"
+                            android:textColor="#546E7A"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -377,28 +436,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="32dp"
+                android:layout_marginTop="24dp"
                 android:background="#E0F7FA"
-                app:layout_constraintTop_toBottomOf="@id/turtleStoryCard">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="32dp"
+                app:layout_constraintTop_toBottomOf="@id/cleanupStoryCard">
+
                 <TextView
-                    android:text="@string/donate_prompt"
-                    android:textSize="16sp"
-                    android:textStyle="italic"
-                    android:textColor="@color/deep_blue"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"/>
+                    android:text="@string/donate_prompt"
+                    android:textColor="@color/deep_blue"
+                    android:textSize="16sp"
+                    android:textStyle="italic" />
 
                 <Button
                     android:id="@+id/btnDonate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button_donate"
+                    android:layout_marginTop="12dp"
                     android:backgroundTint="@color/teal_accent"
-                    app:cornerRadius="50dp"
                     android:paddingHorizontal="32dp"
-                    android:layout_marginTop="12dp"/>
+                    android:text="@string/button_donate"
+                    app:cornerRadius="50dp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -412,9 +473,9 @@
         android:contentDescription="Logout"
         android:src="@android:drawable/ic_lock_power_off"
         app:backgroundTint="#FFEBEE"
-        app:tint="#D32F2F"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#D32F2F" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,7 +6,7 @@
     <string name="hero_subtitle">Join the movement to protect our oceans 🌊</string>
 
     <string name="stat_volunteers">Volunteers</string>
-    <string name="stat_trash_gone">Trash Gone</string>
+    <string name="stat_events">Events</string>
     <string name="stat_raised">Donations</string>
 
     <string name="button_volunteer">Become a Volunteer</string>
@@ -19,6 +19,9 @@
     <string name="turtle_story_image">Image of a sea turtle being released</string>
     <string name="turtle_story_title">Successful Sea Turtle Release!</string>
     <string name="turtle_story_description">After weeks of rehabilitation, we successfully released a rescued Green Sea Turtle back into the ocean...</string>
+    <string name="cleanup_story_image">Volunteers picking up trash on a beach</string>
+    <string name="cleanup_story_title">Local Beach Cleanup Success!</string>
+    <string name="cleanup_story_description">Hundreds of volunteers removed over 500 lbs of plastic and debris in a single-day event.</string>
 
     <string name="donate_prompt">Help fund ocean cleanup projects 💙</string>
     <string name="button_donate">Donate Now</string>

@@ -111,8 +111,6 @@ class OceanHomeActivity : AppCompatActivity() {
             startCounterAnimation(binding.tvTrash, 15629)
             delay(200)
             startCounterAnimation(binding.tvDonations, 127, prefix = "$", suffix = "K")
-            delay(200)
-            startCounterAnimation(binding.tvProjects, 43)
         }
     }
 
@@ -139,3 +137,4 @@ class OceanHomeActivity : AppCompatActivity() {
         animator.start()
     }
 }
+
